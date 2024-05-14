@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Mother's Day!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Pacifico&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <audio id="myAudio" loop>
+        <source src="momsong.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <button id="mybutton" onclick="document.getElementById('myAudio').play()">Play Music</button>
+</body>
+
+<style>
+    .pacifico-regular {
+        font-family: "Pacifico", cursive;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    .kanit-thin {
+        font-family: "Kanit", sans-serif;
+        font-weight: 100;
+        font-style: normal;
+    }
+
+    .kanit-extralight {
+        font-family: "Kanit", sans-serif;
+        font-weight: 200;
+        font-style: normal;
+    }
+
+    .kanit-light {
+        font-family: "Kanit", sans-serif;
+        font-weight: 300;
+        font-style: normal;
+    }
+
+    .kanit-regular {
+        font-family: "Kanit", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    .kanit-medium {
+        font-family: "Kanit", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    .kanit-semibold {
+        font-family: "Kanit", sans-serif;
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    .kanit-bold {
+        font-family: "Kanit", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    .kanit-extrabold {
+        font-family: "Kanit", sans-serif;
+        font-weight: 800;
+        font-style: normal;
+    }
+
+    .kanit-black {
+        font-family: "Kanit", sans-serif;
+        font-weight: 900;
+        font-style: normal;
+    }
+
+    .kanit-thin-italic {
+        font-family: "Kanit", sans-serif;
+        font-weight: 100;
+        font-style: italic;
+    }
+
+    .kanit-extralight-italic {
+        font-family: "Kanit", sans-serif;
+        font-weight: 200;
+        font-style: italic;
+    }
+
+    .kanit-light-italic {
+        font-family: "Kanit", sans-serif;
+        font-weight: 300;
+        font-style: italic;
+    }
+
+    .kanit-regular-italic {
+        font-family: "Kanit", sans-serif;
+        font-weight: 400;
+        font-style: italic;
+    }
+
+    .kanit-medium-italic {
+        font-family: "Kanit", sans-serif;
+        font-weight: 500;
+        font-style: italic;
+    }
+
+    .kanit-semibold-italic {
+        font-family: "Kanit", sans-serif;
+        font-weight: 600;
+        font-style: italic;
+    }
+
+    .kanit-bold-italic {
+        font-family: "Kanit", sans-serif;
+        font-weight: 700;
+        font-style: italic;
+    }
+
+    .kanit-extrabold-italic {
+        font-family: "Kanit", sans-serif;
+        font-weight: 800;
+        font-style: italic;
+    }
+
+    .kanit-black-italic {
+        font-family: "Kanit", sans-serif;
+        font-weight: 900;
+        font-style: italic;
+    }
+
+
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        /* Prevent any scroll bars */
+        font-family: Kanit, Arial, sans-serif;
+        font-size: 1.5rem;
+        background-color: lightpink;
+    }
+
+    .slider {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        /* Hide anything outside the viewport */
+    }
+
+    .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        /* Start offscreen when not active */
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        transition: transform 0.5s ease;
+        /* Smooth transition for sliding effect */
+        transform: translateX(100%);
+        /* Start right of the viewport */
+        backface-visibility: hidden;
+        /* Improve performance during animations */
+    }
+
+    .visible {
+        transform: translateX(0);
+        /* Bring into view */
+    }
+
+    .hidden-right {
+        transform: translateX(100%);
+        /* Hide to the right */
+    }
+
+    .hidden-left {
+        transform: translateX(-100%);
+        /* Hide to the left */
+    }
+
+
+    .slide img {
+        max-width: 80%;
+        /* Reduce width for better layout */
+        max-height: 40vh;
+        /* Adjust height to leave space for text */
+        object-fit: contain;
+        margin-bottom: 20px;
+        /* Space between image and first text */
+    }
+
+    .animated {
+        opacity: 1;
+        /* Initially visible */
+        transition: opacity 2s;
+        /* Smooth fade out */
+        width: 100%;
+        padding: 0 20px;
+        /* Padding for better text display */
+        box-sizing: border-box;
+        /* Include padding in width calculation */
+        text-align: center;
+    }
+
+    .animated-second {
+        opacity: 0;
+        /* Start hidden */
+        position: absolute;
+        /* Positioning it absolutely to manage layout independently */
+        top: 10%;
+        /* Position at the bottom of the slide */
+        width: 100%;
+        padding: 10px;
+        /* Padding around text */
+        box-sizing: border-box;
+        text-align: center;
+        font-size: 0.75rem;
+        /* Smaller font size */
+        white-space: normal;
+        /* Allow text wrapping */
+        visibility: hidden;
+        /* Hide until animation starts */
+        transition: visibility 0s 2s, opacity 0s 2s;
+        /* Delay visibility and opacity transitions */
+    }
+
+    .an_pic {
+        transition: opacity 2s, transform 2s;
+        opacity: 1;
+        transform: scale(1);
+    }
+
+
+    .an_pic.visible {
+        opacity: 1;
+        /* Fully visible */
+        transform: scale(1);
+        /* Scale to full size */
+    }
+
+
+    .visible .animated {
+        opacity: 1;
+    }
+
+    button {
+        position: fixed;
+        background-color: #fff;
+        border: none;
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        z-index: 1000;
+        /* Ensure it's clear that these are clickable */
+    }
+
+
+    button:focus {
+        outline: none;
+    }
+
+    /* Adjustments for the left and right arrows */
+    .left-arrow,
+    .right-arrow {
+        position: fixed;
+        /* Fixed position */
+        bottom: 20px;
+        /* Move towards the bottom */
+        z-index: 1000;
+        /* Ensure it's above the slides */
+        font-size: 30px;
+        /* Increase size for better visibility */
+        color: white;
+        /* Change color to white for visibility */
+        background-color: rgba(0, 0, 0, 0.5);
+        /* Semi-transparent background */
+        padding: 10px;
+        /* Padding for larger click area */
+        cursor: pointer;
+    }
+
+    .left-arrow {
+        left: 10px;
+        /* Left side of the screen */
+        bottom: 20px;
+        /* Move towards the bottom */
+    }
+
+    .right-arrow {
+        right: 10px;
+        /* Right side of the screen */
+        bottom: 20px;
+        /* Move towards the bottom */
+    }
+</style>
+</head>
+
+</html>
+
+<body>
+    <div class="slider">
+        <div class="slide" style="background-color: lightpink;">
+            <img class="an_pic" src="first.png" alt="Welcome Image">
+            <p class="animated" id="animated-text">Happy Mother's Day, Mom!</p>
+            <p class="animated-second" id="additional-text">This is a little something that I put together for you to
+                show you how much I appreciate everything that you do for me. I hope that you enjoy it and that it makes
+                you smile. I love you, Mom.</p>
+        </div>
+        <div class="slide" style="background-color: white;">
+            <img class="an_pic" src="bar.png" alt="Work Dedication">
+            <p class="animated" id="animated-text">Celebrating your dedication at work and home.</p>
+            <p class="animated-second" id="additional-text">You are one of the hardest workers that I know and you have
+                been one of the best mothers that I could have asked for. Thank you for all of the time and effort that
+                you put in at work and at home that has given me every opportunity that I have had. I am the only one to
+                blame for not being where I could be because you have done everything and more.</p>
+        </div>
+        <div class="slide" style="background-color: #EFEFEF;">
+            <img class="an_pic" src="gnomes.png" alt="Love for Fishing">
+            <p class="animated" id="animated-text">The most creative and caring mother a son could ask for.</p>
+            <p class="animated-second" id="additional-text">You are a selfless organizer and giver. You always think about
+                everyone and everything before yourself and I hope that one day I can put you first and treat you how
+                you always treat everyone else. Your arts and crafts have put so many smiles on people's faces, and even though you might not
+                always enjoy making them, just know that people enjoy them every time that they see them. Sorry that I am not as patient as I should be. I think how 
+                you have taught and figured out how to make the gnomes in your own style and with your own methods is truly awesome! You are awesome!
+            </p>
+        </div>
+        <div class="slide" style="background-color: white;">
+            <img class="an_pic" src="thankyou.png" alt="Appreciation and Apologies">
+            <p class="animated" id="animated-text">Thank you for your strength and love. I'm sorry for the tough times.
+            </p>
+            <p class="animated-second" id="additional-text">Thank you doesn't even begin to describe how much I
+                appreciate everything that you have done for me. I am sorry for all of the times that I have let you
+                down, and I hope that I can make it up to you in the future.</p>
+        </div>
+        <div class="slide" style="background-color: lightpink;">
+            <img class="an_pic" src="last.png" alt="Deep Love and Gratitude">
+            <p class="animated" id="animated-text">With all my love and gratitude, Ryan.</p>
+            <p class="animated-second" id="additional-text">Even though I don't do a very good job of showing it, I want
+                you to know that I am grateful for you and everything that you do for me because you don't have to do it,
+                but you still do. I love you, Mom. Thank you.</p>
+        </div>
+    </div>
+    <button class="left-arrow" onclick="navigate(-1)">&#10094;</button>
+    <button class="right-arrow" onclick="navigate(1)">&#10095;</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const slides = Array.from(document.querySelectorAll('.slide'));
+            let currentIndex = 0;
+            let activeAnimationInterval = null; // Track the active interval for clearing
+
+            function animateText(textElement) {
+                const text = textElement.getAttribute('data-text');
+                textElement.textContent = '';
+                let i = 0;
+                clearInterval(activeAnimationInterval); // Clear previous interval
+                activeAnimationInterval = setInterval(() => {
+                    if (i < text.length) {
+                        textElement.textContent += text[i++];
+                    } else {
+                        clearInterval(activeAnimationInterval);
+                    }
+                }, 50); // Adjust typing speed as needed
+            }
+
+            function handleSlideAnimations(slide) {
+                if (!slide.classList.contains('visible')) return; // Skip if not the active slide
+
+                const firstText = slide.querySelector('.animated');
+                const secondText = slide.querySelector('.animated-second');
+                const image = slide.querySelector('.an_pic');
+
+                setTimeout(() => {
+                    // Ensure this runs only if the slide is still visible
+                    if (slide.classList.contains('visible')) {
+                        image.style.opacity = '0';
+                        firstText.style.opacity = '0';
+                        secondText.style.visibility = 'visible';
+                        secondText.style.opacity = '1';
+                        animateText(secondText);
+                    }
+                }, 2000); // Delay before starting second text animation
+            }
+
+            function updateSlideVisibility() {
+                slides.forEach((slide, index) => {
+                    slide.classList.remove('visible', 'hidden-right', 'hidden-left');
+                    if (index === currentIndex) {
+                        slide.classList.add('visible');
+                        handleSlideAnimations(slide); // Handle animations when slide becomes visible
+                    } else {
+                        slide.classList.add(index < currentIndex ? 'hidden-left' : 'hidden-right');
+                        resetSlideState(slide); // Reset state when slide becomes inactive
+                    }
+                });
+            }
+
+            function resetSlideState(slide) {
+                const firstText = slide.querySelector('.animated');
+                const secondText = slide.querySelector('.animated-second');
+                const image = slide.querySelector('.an_pic');
+
+                // Reset opacity and visibility to initial state
+                image.style.opacity = '1';
+                firstText.style.opacity = '1';
+                secondText.style.opacity = '0';
+                secondText.style.visibility = 'hidden';
+            }
+
+            function navigate(direction) {
+                const potentialIndex = currentIndex + direction;
+                if (potentialIndex >= 0 && potentialIndex < slides.length) {
+                    currentIndex = potentialIndex;
+                    updateSlideVisibility();
+                }
+            }
+
+            // Set initial states and attributes for text elements
+            slides.forEach(slide => {
+                const textElements = slide.querySelectorAll('.animated-second');
+                textElements.forEach(text => {
+                    text.setAttribute('data-text', text.textContent); // Store the actual text
+                });
+            });
+
+            document.querySelector('.right-arrow').addEventListener('click', () => navigate(1));
+            document.querySelector('.left-arrow').addEventListener('click', () => navigate(-1));
+
+            // Initialize the first slide's visibility and animation setup
+            updateSlideVisibility();
+        });
+    </script>
+
+</body>
+
+</body>
+
+</html>
